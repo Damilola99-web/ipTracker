@@ -1,47 +1,33 @@
-fetch(`http://ip-api.com/json/?fields=50589695`)
-        .then(response => {
-            return response.json()
-        })
-        .then(result => {
-            console.log(result)
-            let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.query}</h3></div>
-            <div class = 'dettails'><h4>LOCATION</h4><h3>${result.city}, ${result.countryCode}</h3></div>
-            <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.offset/3600}:00</h3></div>
-            <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>` 
-            
-            document.querySelector('.ipdetails').innerHTML = details
-            let map = L.map('map').setView([result.lat, result.lon], 15);
+let lat = ''
+let lng = ''
+fetch(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_LaVAgiMV1V5AO8RxwBw0xIKbZ9AJW&ipAddress=&domain=`)
+.then(response => response.json())
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            L.marker([result.lat, result.lon]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup();
-        })
+.then(result => {
+    console.log(result)
+    let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.ip}</h3></div>
+    <div class = 'dettails'><h4>LOCATION</h4><h3>${result.location.city}, ${result.location.country}</h3></div>
+    <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.location.timezone}</h3></div>
+    <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>` 
+    
+    document.querySelector('.ipdetails').innerHTML = details
+    lat = result.location.lat
+    lng = result.location.lng
+})
 document.querySelector('input').addEventListener('keypress', (e)=> {
     if (e.key == 'Enter') {
-        fetch(`http://ip-api.com/json/${e.currentTarget.value}?fields=50589695`)
+        fetch(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_LaVAgiMV1V5AO8RxwBw0xIKbZ9AJW&ipAddress=${e.currentTarget.value}&domain=${e.currentTarget.value}`)
         .then(response => {
             return response.json()
         })
         .then(result => {
-            let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.query}</h3></div>
-            <div class = 'dettails'><h4>LOCATION</h4><h3>${result.city}, ${result.countryCode}</h3></div>
-            <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.offset/3600}:00</h3></div>
-            <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>` 
-            
+            let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.ip}</h3></div>
+            <div class = 'dettails'><h4>LOCATION</h4><h3>${result.location.city}, ${result.location.country}</h3></div>
+            <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.location.timezone}</h3></div>
+            <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>`          
             document.querySelector('.ipdetails').innerHTML = details
-            let map = L.map('map').setView([result.lat, result.lon], 15);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            L.marker([result.lat, result.lon]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup();
+            lat = result.location.lat
+            lng = result.location.lng
         })
         .catch(err => {
             document.querySelector('.down').innerHTML += `<h3>${err}</h3>`
@@ -50,31 +36,34 @@ document.querySelector('input').addEventListener('keypress', (e)=> {
 });
 document.querySelector('.search').addEventListener('click', (e)=> {
     
-    fetch(`http://ip-api.com/json/${document.querySelector('input').value}?fields=50589695`)
+    fetch(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_LaVAgiMV1V5AO8RxwBw0xIKbZ9AJW&ipAddress=${document.querySelector('input').value}&domain=${document.querySelector('input').value}`)
     .then(response => {
         return response.json()
     })
     .then(result => {
-        let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.query}</h3></div>
-        <div class = 'dettails'><h4>LOCATION</h4><h3>${result.city}, ${result.countryCode}</h3></div>
-        <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.timezone}</h3></div>
-        <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>` 
+        let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.ip}</h3></div>
+            <div class = 'dettails'><h4>LOCATION</h4><h3>${result.location.city}, ${result.location.country}</h3></div>
+            <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.location.timezone}</h3></div>
+            <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>` 
         
         document.querySelector('.ipdetails').innerHTML = details
-        let map = L.map('map').setView([result.lat, result.lon], 15);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            L.marker([result.lat, result.lon]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup();
+        lat = result.location.lat
+        lng = result.location.lng
+        
     })
     .catch(err => {
         document.querySelector('.down').innerHTML += `<h3>${err}</h3>`
     })
     
 });
+let map = L.map('map').setView([lat, lng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                .openPopup();
 
 

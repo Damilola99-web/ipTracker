@@ -149,7 +149,7 @@ h1, h2, h3, h4, h5, p, a {
 
 #map {
   width: 100vw;
-  height: 700px;
+  height: 800px;
   z-index: 10;
 }
 
@@ -162,11 +162,17 @@ h1, h2, h3, h4, h5, p, a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 90vw;
-    height: 500px;
+    width: 85vw;
+    height: 400px;
   }
-  .input {
-    width: 90vw;
+  .up {
+    text-align: center;
+  }
+  .up .input {
+    width: 85vw;
+  }
+  .up .input input {
+    width: 100% !important;
   }
 }
 /*# sourceMappingURL=style.css.map */

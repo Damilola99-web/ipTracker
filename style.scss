@@ -89,17 +89,23 @@ h1,h2,h3,h4,h5,p,a {
 }
 #map {
     width: 100vw;
-    height: 700px;
+    height: 800px;
     z-index: 10;
 }
 @media(max-width:800px) {
     .ipdetails{
         flex-direction: column;
         display: flex;
-        width: 90vw;
-        height: 500px;
+        width: 85vw;
+        height: 400px;
     }
-    .input {
-        width: 90vw;
-    }
+    .up{
+        text-align: center;
+        .input {
+            width: 85vw;
+            input {
+                width: 100% !important;
+            }
+        }
+    } 
 }
