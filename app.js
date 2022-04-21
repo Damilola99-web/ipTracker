@@ -11,8 +11,17 @@ fetch(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_LaVAgiMV1V5AO8Rxw
     <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>` 
     
     document.querySelector('.ipdetails').innerHTML = details
-    lat = result.location.lat
-    lng = result.location.lng
+    lat = parseFloat(result.location.lat) 
+    lng = parseFloat(result.location.lng)
+    let map = L.map('map').setView([lat, lng], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([lat, lng]).addTo(map)
+            .bindPopup('Location')
+            .openPopup();
 })
 document.querySelector('input').addEventListener('keypress', (e)=> {
     if (e.key == 'Enter') {
@@ -28,9 +37,19 @@ document.querySelector('input').addEventListener('keypress', (e)=> {
             document.querySelector('.ipdetails').innerHTML = details
             lat = result.location.lat
             lng = result.location.lng
+            let map = L.map('map').setView([lat, lng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup('Location')
+                .openPopup();
+            
         })
         .catch(err => {
-            document.querySelector('.down').innerHTML += `<h3>${err}</h3>`
+            document.querySelector('#map').innerHTML += `<h3>${err}</h3>`
         })
     }
 });
@@ -49,6 +68,15 @@ document.querySelector('.search').addEventListener('click', (e)=> {
         document.querySelector('.ipdetails').innerHTML = details
         lat = result.location.lat
         lng = result.location.lng
+        let map = L.map('map').setView([lat, lng], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([lat, lng]).addTo(map)
+            .bindPopup('Location')
+            .openPopup();
         
     })
     .catch(err => {
@@ -56,14 +84,8 @@ document.querySelector('.search').addEventListener('click', (e)=> {
     })
     
 });
-let map = L.map('map').setView([lat, lng], 13);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+    
 
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup();
 
 
