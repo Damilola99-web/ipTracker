@@ -1,9 +1,10 @@
 let lat = ''
 let lng = ''
-fetch(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_LaVAgiMV1V5AO8RxwBw0xIKbZ9AJW&ipAddress=&domain=`)
-.then(response => response.json())
+axios.get(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_LaVAgiMV1V5AO8RxwBw0xIKbZ9AJW&ipAddress=&domain=`)
 
-.then(result => {
+
+.then(response => {
+    let result = response.data
     console.log(result)
     let details = `<div class = 'dettails'><h4>IP ADDRESS</h4><h3>${result.ip}</h3></div>
     <div class = 'dettails'><h4>LOCATION</h4><h3>${result.location.city}, ${result.location.country}</h3></div>
