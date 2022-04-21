@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, p, a {
+  font-family: 'Rubik', sans-serif;
+}
+
+.main {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.up {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 330px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  background: url("images/pattern-bg.png");
+}
+
+.up h2.ip {
+  color: white;
+  font-size: 35px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.up .input {
+  position: relative;
+}
+
+.up .input input {
+  width: 540px;
+  height: 60px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-size: 21px;
+  padding: 0px 35px;
+  font-family: 'Rubik', sans-serif;
+}
+
+.up .input input:focus {
+  outline: none;
+  border: none;
+}
+
+.up .input .search {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 60px;
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 60px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+::-webkit-input-placeholder {
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  color: #5c5c5c;
+}
+
+:-ms-input-placeholder {
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  color: #5c5c5c;
+}
+
+::-ms-input-placeholder {
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  color: #5c5c5c;
+}
+
+::placeholder {
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  color: #5c5c5c;
+}
+
+.ipdetails {
+  z-index: 20;
+  width: 70%;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 255px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 150px;
+  border-radius: 20px;
+  background-color: white;
+  -webkit-box-shadow: 2px 2px 3px whitesmoke;
+          box-shadow: 2px 2px 3px whitesmoke;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.ipdetails h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.ipdetails h4 {
+  color: gray;
+}
+
+#map {
+  width: 100vw;
+  height: 700px;
+  z-index: 10;
+}
+
+@media (max-width: 800px) {
+  .ipdetails {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 90vw;
+    height: 500px;
+  }
+  .input {
+    width: 90vw;
+  }
+}
+/*# sourceMappingURL=style.css.map */
