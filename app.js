@@ -36,18 +36,15 @@ document.querySelector('input').addEventListener('keypress', (e)=> {
             <div class = 'dettails'><h4>TIMEZONE</h4><h3>UTC ${result.location.timezone}</h3></div>
             <div class = 'dettails'><h4>ISP</h4><h3>${result.isp}</h3></div>`          
             document.querySelector('.ipdetails').innerHTML = details
-            lat = result.location.lat
-            lng = result.location.lng
-            let map = L.map('map').setView([lat, lng], 13);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup('Location')
-                .openPopup();
             
+            // var lat = (e.latlng.lat);
+            // var lng = (e.latlng.lng);
+           
+            
+        })
+        .then(result => {
+            var newLatLng = new L.LatLng(result.location.lat, result.location.lng);
+            marker.setLatLng(newLatLng); 
         })
         .catch(err => {
             document.querySelector('#map').innerHTML += `<h3>${err}</h3>`
@@ -71,14 +68,12 @@ document.querySelector('.search').addEventListener('click', (e)=> {
         lng = result.location.lng
         let map = L.map('map').setView([lat, lng], 13);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        L.marker([lat, lng]).addTo(map)
-            .bindPopup('Location')
-            .openPopup();
         
+        
+    })
+    .then(result => {
+        var newLatLng = new L.LatLng(result.location.lat, result.location.lng);
+        marker.setLatLng(newLatLng); 
     })
     .catch(err => {
         document.querySelector('.down').innerHTML += `<h3>${err}</h3>`

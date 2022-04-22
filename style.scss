@@ -96,11 +96,31 @@ h1,h2,h3,h4,h5,p,a {
     .ipdetails{
         flex-direction: column;
         display: flex;
-        width: 85vw;
+        width: 82vw;
         height: 400px;
+        top: 230px;
+    }
+    .dettails {
+        h4 {
+            color: rgb(60, 60, 60);
+            font-size: 19px;
+            font-weight: 400;
+        }
+        h3 {
+            color: rgb(0, 0, 0);
+            font-size: 26px;
+            font-weight: 500;
+        }
     }
     .up{
         text-align: center;
+        align-items: center;
+        justify-content: start;
+        h2 {
+            margin-top: 65px;
+            font-size: 27px;
+            font-weight: 400;
+        }
         .input {
             width: 85vw;
             input {
